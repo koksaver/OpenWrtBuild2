@@ -6,7 +6,7 @@
 # https://github.com/P3TERX
 #===============================================
 
-name:  QihooV6编译lean版openwrt 带 docker
+name:  QihooV6编译lean版openwrt 带 mesh
 
 on:
   workflow_dispatch:
