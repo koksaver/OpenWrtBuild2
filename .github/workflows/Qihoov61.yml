@@ -134,5 +134,5 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           **This is OpenWrt firmware for Qihoo6000**
-          * 这是 Qihoo6000 平台使用的 OpenWrt 固件
+          * 这是 Qihoo6000 平台使用的 OpenWrt 固件 with docker
           ${{ env.useVersionInfo }}
