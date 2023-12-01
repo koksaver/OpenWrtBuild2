@@ -30,16 +30,6 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Maximize build space
-        uses: insightsengineering/disk-space-reclaimer@master
-        with:
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
-          docker-images: true
-          tools-cache: true
     - name: Checkout
       uses: actions/checkout@main
 
@@ -48,8 +38,10 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         docker rmi $(docker images -q)
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /usr/local/lib/android
-        sudo -E apt-get -qq purge azure-cli google* llvm* moby* mysql* php* powershell
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /usr/local/lib/android /opt/ghc /mnt/swapfile
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        sudo docker image prune --all --force
+        sudo -E apt-get -qq purge azure-cli google* llvm* moby* mysql* php* powershell mongodb* mono-devel libgl1-mesa-dri
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install $(curl -fsSL is.gd/depends_ubuntu_2204)
         sudo -E apt-get -qq autoremove --purge
