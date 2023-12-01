@@ -22,7 +22,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: true
-  FILE_NAME: Qihoo6000 With Mesh
+  FILE_NAME: Qihoo6000WithMesh
   TZ: Asia/Shanghai
 
 jobs:
@@ -132,7 +132,7 @@ jobs:
       uses: ncipollo/release-action@main
       if: steps.organize.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true'
       with:
-        name: R${{ env.DATE }} for ${{ env.FILE_NAME }} with docker
+        name: R${{ env.DATE }} for ${{ env.FILE_NAME }}
         artifacts: ${{ env.FIRMWARE }}/*
         allowUpdates: true
         tag: ${{ env.FILE_NAME }}
