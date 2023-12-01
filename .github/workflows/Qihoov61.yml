@@ -138,6 +138,6 @@ jobs:
         tag: ${{ env.FILE_NAME }}
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
-          **This is OpenWrt firmware for Qihoo6000**
+          **This is OpenWrt firmware for Qihoo6000 with docker**
           * 这是 Qihoo6000 平台使用的 OpenWrt 固件 with docker
           ${{ env.useVersionInfo }}
